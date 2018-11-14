@@ -30,6 +30,9 @@ class App extends React.Component {
         this.setState({
             notes: newNotes
         })
+        this.noteTitle.value = "",
+        this.noteText.value = "",
+        this.showSideBar(e)
     }
     render(){
         return (
@@ -43,11 +46,11 @@ class App extends React.Component {
                     </nav>
                 </header>
                 <section className="notes">
-                {this.state.notes.map(note => {
+                {this.state.notes.map((note ,i) => {
                     return(
-                        <NoteCard note={note}
+                        <NoteCard note={note} key={`note-${i}`}/>
                     )
-                })}
+                }).reverse()}
                 </section>
                 <aside className="sidebar" ref={ref => this.sideBar =ref}>
                     <form
