@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import NoteCard from './notesCard'
 
 class App extends React.Component {
     constructor(){
@@ -42,12 +43,11 @@ class App extends React.Component {
                     </nav>
                 </header>
                 <section className="notes">
-                <div className="noteCard">
-                <i className="fa fa-edit"></i>
-                <i className="fa fa-times"></i>
-                <h4>Test note!</h4>
-                    <p>I got notes</p>
-                </div>
+                {this.state.notes.map(note => {
+                    return(
+                        <NoteCard note={note}
+                    )
+                })}
                 </section>
                 <aside className="sidebar" ref={ref => this.sideBar =ref}>
                     <form
