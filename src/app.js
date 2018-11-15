@@ -2,6 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import NoteCard from './notesCard'
 
+  const config = {
+    apiKey: "AIzaSyDshodj2AbH9WwruyMhcaiF3yABrOKMAiU",
+    authDomain: "noted-926fe.firebaseapp.com",
+    databaseURL: "https://noted-926fe.firebaseio.com",
+    projectId: "noted-926fe",
+    storageBucket: "noted-926fe.appspot.com",
+    messagingSenderId: "546847460903"
+  };
+  firebase.initializeApp(config);
+
+
 class App extends React.Component {
     constructor(){
         super()
@@ -12,6 +23,12 @@ class App extends React.Component {
         this.showSideBar =this.showSideBar.bind(this)
         this.addNote =this.addNote.bind(this)
     }
+    componentDidMount(){
+        firebase.database().ref().on('value', (res) => {
+        console.log(res.val())
+        })
+    }
+
     showSideBar(e){
         e.preventDefault()
         this.sideBar.classList.toggle("show")
