@@ -1,11 +1,28 @@
 import React from 'react'
-export default function (props){
-    return(
-        <div className="noteCard">
-                <i className="fa fa-edit"></i>
-                <i className="fa fa-times"></i>
-                <h4>{props.note.title}</h4>
-                    <p>{props.note.text}</p>
-        </div>
-    )
+export default class NoteCard extends React.Component{
+    constructor(){
+        super()
+        this.state ={
+            editing: false, 
+            note: {}
+            }
+    }
+    componentDidMount(){
+        this.setState({
+            note: this.props.note
+        })
+    }
+    render(){
+        return(
+            <div className="noteCard">
+                    <i className="fa fa-edit"
+                    onClick={() => this.setState({editing: true})}></i>
+                    <i className="fa fa-times"
+                    onClick={() => this.props.removeNote(this.state.note.key)}></i>
+                    <h4>{this.state.note.title}</h4>
+                    <p>{this.state.note.text}</p>
+            </div>
+        )
+    }
+    
 }

@@ -23,11 +23,11 @@ class App extends React.Component {
         this.showSideBar =this.showSideBar.bind(this)
         this.addNote =this.addNote.bind(this)
     }
-    componentDidMount(){
-        firebase.database().ref().on('value', (res) => {
-        console.log(res.val())
-        })
-    }
+    // componentDidMount(){
+    //     firebase.database().ref().on('value', (res) => {
+    //     console.log(res.val())
+    //     })
+    // }
 
     showSideBar(e){
         e.preventDefault()
@@ -38,6 +38,9 @@ class App extends React.Component {
     addNote(e){
         e.preventDefault()
         console.log(this)
+        //console.log(`this is: ${this}`)
+        //console.log(`props is: ${props}`)
+        //console.log(`state is: ${state}`)
         const note = {
             title: this.noteTitle.value,
             text: this.noteText.value
@@ -51,11 +54,15 @@ class App extends React.Component {
         this.noteText.value = "",
         this.showSideBar(e)
     }
+
+    removeNote(e){
+        console.log('One day I would like to remove this')
+    }
     render(){
         return (
             <div>
                 <header className="mainHeader">
-                    <h1>Hello Ms Choza</h1>
+                    <h1>Hello Ms Choza. Feel free to add notes here:</h1>
                     <nav>
                         <a href=""
                         onClick={this.showSideBar}
