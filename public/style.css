@@ -38,11 +38,11 @@ body {
 */
 
 .sidebar {
-	width: 250px;
+	width: 350px;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -270px;
+	left: -370px;
 	background: #7fb5d7;
 	transition: all 0.5s ease;
 	padding: 0 15px;
@@ -60,6 +60,7 @@ body {
 	border: none;
 	border-bottom: 2px solid #517288;
 	padding: 5px;
+	height: 55px;
 }
 
 .sidebar textarea {
