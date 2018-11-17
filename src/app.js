@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import NoteCard from './notesCard'
+import NoteCard from './NoteCard'
 
   const config = {
     apiKey: "AIzaSyDshodj2AbH9WwruyMhcaiF3yABrOKMAiU",
@@ -57,8 +57,22 @@ class App extends React.Component {
 
     removeNote(e){
         console.log('One day I would like to remove this')
+        
+
     }
+
+    editNote(e){
+        const title = e.target.title;
+        const text = e.target.text;
+        this.setState({
+          [title]: text,
+        });
+        this.addNote =this.addNote.bind(this)
+        this.editNote= this.editNote.bind(this)
+      }
+    
     render(){
+        
         return (
             <div>
                 <header className="mainHeader">
@@ -72,7 +86,9 @@ class App extends React.Component {
                 <section className="notes">
                 {this.state.notes.map((note ,i) => {
                     return(
-                        <NoteCard note={note} key={`note-${i}`}/>
+                        <NoteCard note={note} key={`note-${i}`}
+
+                        />
                     )
                 }).reverse()}
                 </section>
