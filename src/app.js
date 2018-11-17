@@ -18,16 +18,13 @@ class App extends React.Component {
         super()
         this.state ={
             notes: [],
-
         }
         this.showSideBar =this.showSideBar.bind(this)
         this.addNote =this.addNote.bind(this)
+        this.removeNote = this.removeNote.bind(this)
+
     }
     // componentDidMount(){
-    //     firebase.database().ref().on('value', (res) => {
-    //     console.log(res.val())
-    //     })
-    // }
 
     showSideBar(e){
         e.preventDefault()
@@ -54,11 +51,18 @@ class App extends React.Component {
         this.noteText.value = "",
         this.showSideBar(e)
     }
-
-    removeNote(e){
-        console.log('One day I would like to remove this')
+  //takes a target an
+  //I'm going to attach the funciton removeNote to a button. This button corressponds with a speceific notecard
+    removeNote(e, i){
+        console.log('One day I would like to remove this', e)
+        console.log(i)
+        //need to remove idex of newwarry which is living in state.
+        const newArray = Array.from(this.state.notes)
+        newArray.splice(i,1)
+        this.setState({
+            notes: newArray
+        })
         
-
     }
 
     editNote(e){
@@ -72,7 +76,7 @@ class App extends React.Component {
       }
     
     render(){
-        
+
         return (
             <div>
                 <header className="mainHeader">
@@ -86,9 +90,11 @@ class App extends React.Component {
                 <section className="notes">
                 {this.state.notes.map((note ,i) => {
                     return(
-                        <NoteCard note={note} key={`note-${i}`}
-
+                        <NoteCard note={note} key={i}
+                        index={i}
+                       removeNote={this.removeNote}
                         />
+                        
                     )
                 }).reverse()}
                 </section>

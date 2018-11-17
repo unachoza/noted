@@ -18,7 +18,7 @@ export default class NoteCard extends React.Component{
                     <i className="fa fa-edit"
                     onClick={() => this.setState({editing: true})}></i>
                     <i className="fa fa-times"
-                    onClick={() => this.props.removeNote(this.state.note.key)}></i>
+                    onClick={(e) => this.props.removeNote(e, this.props.index)}></i>
                     <h4>{this.state.note.title}</h4>
                     <p>{this.state.note.text}</p>
             </div>
@@ -26,3 +26,10 @@ export default class NoteCard extends React.Component{
     }
     
 }
+/*
+    this.state.notes = [ {title:'blah, text:'test'}, {title:'blah, text:'test'} ]
+    let testVariable = this.state.notes[0]
+    testVariable = {title: 'blah', text: 'test'}
+
+    newArray.splice(testVariable, howmanytoremove, )
+*/
