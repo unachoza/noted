@@ -22,6 +22,7 @@ class App extends React.Component {
         this.showSideBar =this.showSideBar.bind(this)
         this.addNote =this.addNote.bind(this)
         this.removeNote = this.removeNote.bind(this)
+        this.editNote = this.editNote.bind(this)
 
     }
     // componentDidMount(){
@@ -47,6 +48,7 @@ class App extends React.Component {
         this.setState({
             notes: newNotes
         })
+        console.log(this.state.notes)
         this.noteTitle.value = "",
         this.noteText.value = "",
         this.showSideBar(e)
@@ -66,6 +68,7 @@ class App extends React.Component {
     }
 
     editNote(e){
+        console.log('begin editing')
         const title = e.target.title;
         const text = e.target.text;
         this.setState({
@@ -93,6 +96,7 @@ class App extends React.Component {
                         <NoteCard note={note} key={i}
                         index={i}
                        removeNote={this.removeNote}
+                       editNote={this.editNote}
                         />
                         
                     )

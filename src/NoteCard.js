@@ -16,7 +16,8 @@ export default class NoteCard extends React.Component{
         return(
             <div className="noteCard">
                     <i className="fa fa-edit"
-                    onClick={() => this.setState({editing: true})}></i>
+                    onClick={(e) => this.props.editNote(e, this.props)}
+                    /* onClick={() => this.setState({editing: true})}*/></i>
                     <i className="fa fa-times"
                     onClick={(e) => this.props.removeNote(e, this.props.index)}></i>
                     <h4>{this.state.note.title}</h4>
